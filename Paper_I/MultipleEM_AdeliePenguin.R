@@ -26,10 +26,10 @@
   ################### ################### ###################
   
   thr_pitch<- 60 #threshold for Pitch detecting land walking during foraging trips (default = 60)
-  thr_pitch_low<- 0 #mean lower threshold for Pitch detecting land walking during foraging trips (default= 20)
+  thr_pitch_low<- 20 #mean lower threshold for Pitch detecting land walking during foraging trips (default= 20)
   thr_temp<-0 #threshold for temperature detecting land walking during foraging trips (default = 0)
   thr_time<-750 #threshold for time required for detecting land walking during foraging trips (default = 750)
-  thr_pitch_lie<- -25 #threshold for Pitch detecting when back in water (default = -12.5)
+  thr_pitch_lie<- -12.5 #threshold for Pitch detecting when back in water (default = -12.5)
   thr_depth<-2 #threshold for surface not surface variable (default = 2)
   
   # Create the function for mode
