@@ -25,7 +25,7 @@
   ################### ################### ###################
   ################### ################### ###################
   
-  thr_pitch<- 60 #threshold for Pitch detecting land walking during foraging trips (default = 60)
+  thr_pitch<- 70 #threshold for Pitch detecting land walking during foraging trips (default = 60)
   thr_pitch_low<- 20 #mean lower threshold for Pitch detecting land walking during foraging trips (default= 20)
   thr_temp<-0 #threshold for temperature detecting land walking during foraging trips (default = 0)
   thr_time<-750 #threshold for time required for detecting land walking during foraging trips (default = 750)
