@@ -1,13 +1,18 @@
+H1{color:Black !important;}</style>
 # MuFFIN_MSCA
+
+H2{color:Black !important;}</style>
 ## **This repository contains R codes developed during my MSCA - 890284 - MuFFIN - Modelling Foraging Fitness in Marine Predators**
 
-```diff
-@@ ### content of Paper_I folder: @@
-```
+H3{color:Purple !important;}</style>
+
+### content of Paper_I folder: 
+
+p{color:Black !important;}</style>
 
 ##### "RCode_Analysis_Little", "RCode_Analysis_Adelie": *contains R code to manipulate raw accelerometer data*
 
-##### MultipleEM...": *contains R code used to run the unsupervised machine learning algorithm Expectation Maximisation on both species*
+##### #MultipleEM...": *contains R code used to run the unsupervised machine learning algorithm Expectation Maximisation on both species*
 
 ##### "CheckEMResults..": *contains R code used to check results obtained from the unsupervised machine learning algorithm Expectation Maximisation on both species*
 
