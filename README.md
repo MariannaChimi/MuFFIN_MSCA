@@ -17,5 +17,5 @@
 
 ##### "EnergyBalance_Adelie": *contains R code to calculate Daily Energy Expenditure*
 
-##### "BudgetChanges": *contains R code for additional general plotting functions to compare time-budgets changes obtained from the machine learning approaced used.*
+##### "BudgetChanges": *contains R code for additional general plotting functions to compare time-budgets changes obtained from the machine learning approaches used.*
 ---------------------------------------------------------
