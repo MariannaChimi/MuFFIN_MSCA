@@ -103,6 +103,9 @@ RScores_all
 write.csv(RScores_all, "/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Little_2020.csv", row.names = FALSE)
 
 ###################### general boxplot
+lineS<-0.7
+pointS<-6
+textS<-20
 
 trainingDF$Beh<-factor(trainingDF$StatesNames, levels = c("Rest","Preen/highFlap_W","Swim/Porpoise","Still",
                                                           "Descending","Swimming","Hunting","Ascending"))
@@ -116,18 +119,18 @@ trainingDF$Beh<-ifelse(trainingDF$Beh=="Rest","Slow surface swim",
 
 
 plot1<- ggplot(trainingDF, aes(x=Beh, y=PitchDiff, fill=Beh)) + theme_bw() + 
-  geom_boxplot(color="gray35",outlier.colour = "gray45")+ theme(legend.position = "none")+ylim(-110,110)+
+  geom_boxplot(color="gray35",outlier.colour = "gray45",outlier.size = pointS)+ theme(legend.position = "none")+ylim(-110,110)+
   scale_fill_manual(values=wes_palette(n=11, name="Darjeeling2", type = "continuous"),name="")+
-  ylab("Pitch (degrees)")+xlab("")+theme(text = element_text(size=15))
+  ylab("Pitch (degrees)")+xlab("")+theme(text = element_text(size=textS))
 
 
 #plot1
 
 
 plot2<- ggplot(trainingDF, aes(x=Beh, y=VeDBA, fill=Beh)) + theme_bw() + 
-  geom_boxplot(color="gray35",outlier.colour = "gray45")+ theme(legend.position = "none")+ylim(0,10)+
+  geom_boxplot(color="gray35",outlier.colour = "gray45",outlier.size = pointS)+ theme(legend.position = "none")+ylim(0,10)+
   scale_fill_manual(values=wes_palette(n=11, name="Darjeeling2", type = "continuous"),name="")+
-  ylab("VeDBA (g)")+xlab("")+theme(text = element_text(size=15))
+  ylab("VeDBA (g)")+xlab("")+theme(text = element_text(size=textS))
 
 
 ggarrange(plot1,plot2,nrow=2)
@@ -242,6 +245,11 @@ library("wesanderson")
 library(ggplot2)
 library(ggpubr)
 
+lineS<-0.7
+pointS<-6
+textS<-25
+
+
 Little_MixSeason<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Little_MixSeason.csv",header=TRUE)
 ####beh Still1 had a problem in the Mix dataset for VeDBA~maybe remove 
 #Little_MixSeason<-Little_MixSeason[-which(Little_MixSeason$Beh=="Still1"),]
@@ -282,14 +290,14 @@ LittleDF$group<-as.factor(LittleDF$group)
 pd <- position_dodge(0.5) # move them .05 to the left and right
 
 plot1<-ggplot(LittleDF, aes(x=Beh, y=mean,fill=var,shape=DF, group=group)) + 
-  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black", width=.1, position=pd) +
-  geom_point(position=pd, size=5)+
-  theme_bw() +theme(text = element_text(size=15))+ylim(0,1)+
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black",  width=.5,size=lineS, position=pd) +
+  geom_point(position=pd, size=pointS)+
+  theme_bw() +theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(name="",values=wes_palette(name="Darjeeling2")[2:3])+
   scale_shape_manual(name="",values=c(24,22),labels = c("Training from both seasons", "Training from season one only"))+
-  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+
+  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+ggtitle("Little penguin")+
   guides(fill = guide_legend(override.aes = list(shape = 21)),
-         shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=15))
+         shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=textS))
 
 plot1
 
@@ -333,14 +341,14 @@ AdelieDF$group<-as.factor(AdelieDF$group)
 pd <- position_dodge(0.5) # move them .05 to the left and right
 
 plot2<-ggplot(AdelieDF, aes(x=Beh, y=mean,fill=var,shape=DF, group=group)) + 
-  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black", width=.1, position=pd) +
-  geom_point(position=pd, size=5)+
-  theme_bw() +theme(text = element_text(size=15))+ylim(0,1)+
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black", width=.5,size=lineS, position=pd) +
+  geom_point(position=pd, size=pointS)+
+  theme_bw() +theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(name="",values=wes_palette(name="Darjeeling2")[2:3])+
   scale_shape_manual(name="",values=c(24,22),labels = c("Training from both seasons", "Training from season one only"))+
-  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+
+  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+ggtitle("Adélie penguin")+
   guides(fill = guide_legend(override.aes = list(shape = 21)),
-         shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=15))
+         shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=textS))
 
 plot2
 
@@ -363,10 +371,10 @@ trainingDF$TagID_2<-substr(trainingDF$ID_Ind,1,8)
 unique(trainingDF$StatesName)
 
 ggplot(trainingDF[which(trainingDF$StatesNames=="Still")], aes(x=StatesNames, y=PitchDiff, fill=ID_Ind)) +
-  geom_boxplot()+ theme(legend.position = "none")+ylim(-100,100)
+  geom_boxplot(outlier.size = pointS)+ theme(legend.position = "none")+ylim(-100,100)+ theme(legend.text=element_text(size=textS))
 
 ggplot(trainingDF[which(trainingDF$StatesNames=="Still")], aes(x=StatesNames, y=VeDBA, fill=ID_Ind)) +
-  geom_boxplot()+ theme(legend.position = "none")+ylim(0,10)
+  geom_boxplot(outlier.size = pointS)+ theme(legend.position = "none")+ylim(0,10)+ theme(legend.text=element_text(size=textS))
 
 
 

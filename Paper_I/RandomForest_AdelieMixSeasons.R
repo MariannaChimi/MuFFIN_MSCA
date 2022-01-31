@@ -1196,13 +1196,18 @@ supp.labs <- c("Training from season 1 only", "Training from both seasons")
 names(supp.labs) <- c("1Season", "MixSeason")
 
 
+lineS<-0.7
+pointS<-6
+textS<-20
+
+
 library("wesanderson")
 plotAdelie<- ggplot() + theme_bw() +
-  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1), data = AccuracyAll)+ggtitle("Adélie penguin")+
-  ylab("RF vs EM agreement")+xlab("Season number")+theme(text = element_text(size=15))+ylim(0,1)+
+  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1),outlier.size = pointS, data = AccuracyAll)+ggtitle("Adélie penguin")+
+  ylab("RF vs EM agreement")+xlab("Season number")+theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(values=wes_palette(n=2, name="Chevalier1"),name="",labels = c("Train","Predict"))+ 
   facet_grid(. ~ RFType,labeller = labeller(RFType = supp.labs))+ theme(legend.position="top")+
-  theme(legend.text=element_text(size=15))
+  theme(legend.text=element_text(size=textS))
 
 library(ggpubr)
 ggarrange(plotAdelie, plotLittle,common.legend=T) 

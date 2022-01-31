@@ -228,6 +228,12 @@ write.csv(AllBudgetsDF_Complete, "/Users/mariannachimienti/MarieCurie/RF_Results
 ##############################################################################
 ##############################################################################
 ##############################################################################
+
+lineS<-0.7
+pointS<-6
+textS<-20
+
+
 AllBudgetsDF_Complete<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AllBudgetsAdelie2019_2020_All_E.csv",header=TRUE)
 dim(AllBudgetsDF_Complete)
 
@@ -237,14 +243,14 @@ AllBudgetsDF_Complete$ID_Ind<-as.factor(AllBudgetsDF_Complete$ID_Ind)
 
 
 plot1<-ggplot(AllBudgetsDF_Complete, aes(x=Method, y=EE_VeDBA,fill=Method),color="gray35") + 
-  geom_boxplot()+
+  geom_boxplot(outlier.size = pointS)+
  # geom_jitter(aes(color=ID_Ind), size=3, alpha=0.7) +
  # scale_color_viridis(discrete = TRUE, alpha=0.6,guide=FALSE) +
-  theme_bw() +theme(text = element_text(size=15))+
+  theme_bw() +theme(text = element_text(size=textS))+
   scale_fill_manual(name="",values=c("white","white"),labels = c("EM: Expectation Maximisation", "RF: Random Forest"))+
 #  xlab("")+ylab(expression(paste("Energy Expenditure (Kj ",g^-1," trip ", duration^-1,")")))+
   xlab("")+ylab(expression(paste("Energy Expenditure (Kj ",g^-1," d", ay^-1,")")))+
-  theme(legend.text=element_text(size=15)) + theme(legend.position="top")
+  theme(legend.text=element_text(size=textS)) + theme(legend.position="top")
 
 plot1
 
@@ -271,11 +277,11 @@ Prop_DF_All<-rbind(Prop_DF_Preen,Prop_DF_Water,Prop_DF_Land)
 
 
 plot2<-ggplot(Prop_DF_All, aes(x=Method, y=val,fill=Beh)) + 
-  geom_boxplot()+
+  geom_boxplot(outlier.size = pointS)+
   scale_fill_manual(name="",values=wes_palette(name="Royal1"),labels = c("Land/Ice", "Preen/Flap on water","Water"))+
-  theme_bw() +theme(text = element_text(size=15))+
+  theme_bw() +theme(text = element_text(size=textS))+
   xlab("")+ylab("Proportion")+ylim(0,1)+
-  theme(legend.text=element_text(size=15)) + theme(legend.position="top")
+  theme(legend.text=element_text(size=textS)) + theme(legend.position="top")
 
 plot2
 
@@ -348,17 +354,17 @@ Meth_DF$lwr<-predlm$lwr
 Meth_DF$upr<-predlm$upr
 
 plot3<-ggplot(Meth_DF) + 
-  geom_point(aes(x=EE_VeDBA_RF, y=EE_VeDBA_EM,color=ID_Ind_EM),color="black", size=3) +
+  geom_point(aes(x=EE_VeDBA_RF, y=EE_VeDBA_EM,color=ID_Ind_EM),color="black", size=pointS) +
   #scale_color_viridis(discrete = TRUE, alpha=0.6,guide=FALSE) +
   geom_line(aes(x=EE_VeDBA_RF,y = fit), size = 1,color = "gray45")+
   geom_ribbon(aes(x=EE_VeDBA_RF,ymin = lwr, ymax = upr),  color = "gray45",alpha = .15,linetype="dashed")+
-  theme_bw() +theme(text = element_text(size=15))+
+  theme_bw() +theme(text = element_text(size=textS))+
   ylim(0.30,1.15)+xlim(0.30,1.15)+
   geom_abline(slope=1, intercept=0,  color = "dodgerblue3",linetype="dashed", size = 1)+
   #  xlab("")+ylab(expression(paste("Energy Expenditure (Kj ",g^-1," trip ", duration^-1,")")))+
   xlab(expression(paste("Energy Expenditure by RF (Kj ",g^-1," d", ay^-1,")")))+
   ylab(expression(paste("Energy Expenditure by EM (Kj ",g^-1," d", ay^-1,")")))+
-  theme(legend.text=element_text(size=15)) + theme(legend.position="top")
+  theme(legend.text=element_text(size=textS)) + theme(legend.position="top")
 
 plot3
 

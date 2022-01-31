@@ -928,6 +928,12 @@ ggplot() +
 
 
 #########################################################
+lineS<-0.7
+pointS<-6
+textS<-20
+library(ggfortify)
+
+
 #plots
 #show confusion matrix
 rf_pred %>%
@@ -960,7 +966,9 @@ level1<-ifelse(g$.level=="Rest","Slow surface swim",
 
 g$.level<-level1
 dev.new()
-autoplot(g)
+autoplot(g)+theme(text = element_text(size=textS))+
+  aes(size = as.factor(.group)) +
+  scale_size_manual(values =rep(lineS,10),guide="none")
 
 
 
@@ -1002,7 +1010,7 @@ VarImp$Variable1<-factor(VarImp$Variable, levels =VarImp$Variable)
 
 p<-ggplot(data=VarImp, aes(x=Variable1, y=Importance)) +
   geom_bar(stat="identity")+ coord_flip()+
-  theme_bw() +theme(text = element_text(size=15))+xlab("")
+  theme_bw() +theme(text = element_text(size=textS))+xlab("")
 p
 
 

@@ -1137,6 +1137,12 @@ AllBudgets$beh<-as.factor(AllBudgets$beh)
   
 
   #########################################################
+  lineS<-0.7
+  pointS<-6
+  textS<-20
+  library(ggfortify)
+  
+  
   #plots
   #show confusion matrix
   rf_pred %>%
@@ -1170,10 +1176,12 @@ AllBudgets$beh<-as.factor(AllBudgets$beh)
                         ifelse(g$.level=="Ascending","Ascend",as.character(g$.level)))))))))
   
   
-  g$.level<-level1
-  dev.new()
-  autoplot(g)
-  
+ g$.level<-level1
+# dev.new()
+ autoplot(g)+theme(text = element_text(size=textS))+
+   aes(size = as.factor(.group)) +
+   scale_size_manual(values =rep(lineS,10),guide="none")
+ 
   
   
   # Basic barplot
@@ -1211,7 +1219,7 @@ AllBudgets$beh<-as.factor(AllBudgets$beh)
   
   p<-ggplot(data=VarImp, aes(x=Variable1, y=Importance)) +
     geom_bar(stat="identity")+ coord_flip()+
-    theme_bw() +theme(text = element_text(size=15))+xlab("")
+    theme_bw() +theme(text = element_text(size=textS))+xlab("")
   p
   
   

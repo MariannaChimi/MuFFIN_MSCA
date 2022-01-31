@@ -679,6 +679,11 @@ accData$States_lev<-factor(accData$States4, levels = c("1_Dive","2_Dive","3_Dive
                                                        "1_UWLand","2_UWLand","3_UWLand","4_UWLand",
                                                        "1_UWNotLand","2_UWNotLand","3_UWNotLand"))
 
+
+lineS<-0.7
+pointS<-6
+textS<-20
+
 subAcc<-accData[790000:860000]
 subAccPoint<-subAcc[which(subAcc$States_lev=="1_UWLand"|subAcc$States_lev=="2_UWLand"|subAcc$States_lev=="3_UWLand"|subAcc$States_lev=="4_UWLand"),]
 subAccPoint$States_lev<-as.factor(as.character(subAccPoint$States_lev))
@@ -698,18 +703,18 @@ custom_colors <- scale_colour_manual(name = "behavioural states on land/ice", va
 #   theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
 
 plot1<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=pointS)+
   custom_colors+ xlab("")+ylab("Pitch (degrees)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 
 plot2<-ggplot() +theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=pointS)+
   custom_colors+
   xlab("time (utc)")+ylab("VeDBA (g)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 ggarrange(plot1,plot2,ncol=1,common.legend = TRUE)
 
@@ -727,26 +732,26 @@ custom_colors <- scale_colour_manual(name = "behavioural states below water surf
                                      labels=c("1_UWNotLand"="Slow surface swim", "2_UWNotLand"="Swim/Porpoise", "3_UWNotLand"="Preen/Flap on water"))
 
 plot0<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=(depth25Hz*-1)),colour="gray50", size=0.5)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=(depth25Hz*-1)),colour="gray50", size=lineS)+
 #  geom_point(data=subAccPoint, aes(x=DatesPos, y=(depth25Hz*-1),colour=States_lev), size=2)+
   # scale_colour_igv()+
   custom_colors+
   xlab("")+ylab("Depth (m)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 
 plot1<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=pointS)+
   custom_colors+xlab("")+ylab("Pitch (degrees)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plot2<-ggplot() +theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=pointS)+
   custom_colors+
   xlab("time (utc)")+ylab("VeDBA (g)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 ggarrange(plot0,plot1,plot2,ncol=1,common.legend = TRUE)
 
@@ -764,65 +769,69 @@ custom_colors <- scale_colour_manual(name = "behavioural states below water surf
 
 
 plot1a<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=pointS)+
   custom_colors+xlab("")+ylab("Pitch (degrees)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plot2a<-ggplot() +theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=pointS)+
   custom_colors+
   xlab("time (utc)")+ylab("VeDBA (g)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 ggarrange(plot1a,plot2a,ncol=1,common.legend = TRUE)
 
 ########################### diving 
-subAcc<-accData[920000:940000]
-#subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"),]
-subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"|subAcc$States_lev=="5_Dive"),]
+#subAcc<-accData[920000:940000] #for shallow diving
+subAcc<-accData[1290000:1306000] #for deep dives
+subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"),]
+#subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"|subAcc$States_lev=="5_Dive"),]
 
 subAccPoint$States_lev<-as.factor(as.character(subAccPoint$States_lev))
 #define custom color scale
 
-# myColors <-  lisa_palette("KarlZerbe")[c(1,2,3,4)]
-# names(myColors) <- levels(unique(subAccPoint$States_lev))
-# custom_colors <- scale_colour_manual(name = "diving behavioural states", values = myColors,
-#                                      labels=c("1_Dive"="Hunt", "2_Dive"="Ascend", "3_Dive"="Swim/Cruise while diving", "4_Dive"="Descend"))
-
-myColors <-  lisa_palette("KarlZerbe")[c(1,2,3,4,5)]
+myColors <-  lisa_palette("KarlZerbe")[c(1,2,3,4)]
 names(myColors) <- levels(unique(subAccPoint$States_lev))
 custom_colors <- scale_colour_manual(name = "diving behavioural states", values = myColors,
-                                     labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))
+                                     labels=c("1_Dive"="Hunt", "2_Dive"="Ascend", "3_Dive"="Swim/Cruise while diving", "4_Dive"="Descend"),
+                                     breaks = c("4_Dive", "3_Dive","1_Dive", "2_Dive"))
+
+# myColors <-  lisa_palette("KarlZerbe")[c(1,2,3,4,5)]
+# names(myColors) <- levels(unique(subAccPoint$States_lev))
+# custom_colors <- scale_colour_manual(name = "diving behavioural states", values = myColors,
+#                                      labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))
 
 plot0<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=(depth25Hz*-1)),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint, aes(x=DatesPos, y=(depth25Hz*-1),colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=(depth25Hz*-1)),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint, aes(x=DatesPos, y=(depth25Hz*-1),colour=States_lev), size=pointS)+
   # scale_colour_igv()+
   custom_colors+
   xlab("")+ylab("Depth (m)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plot1<-ggplot() + theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=Pitch),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=Pitch,colour=States_lev), size=pointS)+
   # scale_colour_igv()+
   custom_colors+
   xlab("")+ylab("Pitch (degrees)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plot2<-ggplot() +theme_bw()+
-  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=0.5)+
-  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=2)+
+  geom_line(data=subAcc,aes( x=DatesPos, y=VeDBA),colour="gray50", size=lineS)+
+  geom_point(data=subAccPoint,aes( x=DatesPos, y=VeDBA,colour=States_lev), size=pointS)+
   # scale_colour_igv()+
   custom_colors+
   xlab("time (utc)")+ylab("VeDBA (g)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 ggarrange(plot0,plot1,plot2,ncol=1,common.legend = TRUE)
 
-subAcc<-accData[900000:1000000]
+#ggsave(path = "/Users/mariannachimienti/Dropbox/MarieCurie/Paper_I/Figures/Figure2HR", width = width, height = height, device='tiff', dpi=300)
+
+subAcc<-accData#[900000:1000000]
 #subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"),]
 subAccPoint<-subAcc[which(subAcc$States_lev=="1_Dive"|subAcc$States_lev=="2_Dive"|subAcc$States_lev=="3_Dive"|subAcc$States_lev=="4_Dive"|subAcc$States_lev=="5_Dive"),]
 
@@ -835,29 +844,29 @@ custom_colors <- scale_fill_manual(name = "diving behavioural states", values = 
                                      labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))
 
 plotBox1<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=(depth25Hz*-1),fill=States_lev))+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=(depth25Hz*-1),fill=States_lev),outlier.size = pointS)+
   # scale_colour_igv()+
   custom_colors+
   scale_x_discrete( labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))+
   xlab("")+ylab("Depth (m)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 
 plotBox2<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=Pitch,fill=States_lev))+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=Pitch,fill=States_lev),outlier.size = pointS)+
   # scale_colour_igv()+
   custom_colors+
   xlab("")+ylab("Pitch (degrees)")+
   scale_x_discrete( labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plotBox3<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=VeDBA,fill=States_lev))+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=VeDBA,fill=States_lev),outlier.size = pointS)+
   # scale_colour_igv()+
   custom_colors+
   scale_x_discrete( labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))+
   xlab("")+ylab("VeDBA (g)")+
-  theme(text = element_text(size=15))+ theme(legend.text=element_text(size=15))
+  theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 
 ggarrange(plotBox1,plotBox2,plotBox3,ncol=1,common.legend = TRUE)

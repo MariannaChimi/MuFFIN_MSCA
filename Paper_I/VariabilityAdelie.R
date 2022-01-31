@@ -101,6 +101,9 @@ RScores_all
 write.csv(RScores_all, "/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Adelie2019_2020.csv", row.names = FALSE)
 
 ###################### general boxplot
+lineS<-0.7
+pointS<-6
+textS<-20
 
 trainingDF$Beh<-factor(trainingDF$StatesNames, levels = c("Walk", "Preen/highFlap_L", "Stand","LieDown","Rest","Preen/highFlap_W","Swim/Porpoise",
                                                                               "Descending","Swimming","Hunting","Ascending"))
@@ -116,18 +119,18 @@ trainingDF$Beh<-ifelse(trainingDF$Beh=="Rest","Slow surface swim",
                                                                                ifelse(trainingDF$Beh=="Ascending","Ascend",as.character(trainingDF$Beh)))))))))
 
 plot1<- ggplot(trainingDF, aes(x=Beh, y=PitchDiff, fill=Beh)) + theme_bw() + 
-  geom_boxplot(color="gray35",outlier.colour = "gray45")+ theme(legend.position = "none")+ylim(-110,110)+
+  geom_boxplot(color="gray35",outlier.colour = "gray45",outlier.size = pointS)+ theme(legend.position = "none")+ylim(-110,110)+
   scale_fill_manual(values=wes_palette(n=11, name="Darjeeling2", type = "continuous"),name="")+
-  ylab("Pitch (degrees)")+xlab("")+theme(text = element_text(size=15))
+  ylab("Pitch (degrees)")+xlab("")+theme(text = element_text(size=textS))
 
 
 #plot1
 
 
 plot2<- ggplot(trainingDF, aes(x=Beh, y=VeDBA, fill=Beh)) + theme_bw() + 
-  geom_boxplot(color="gray35",outlier.colour = "gray45")+ theme(legend.position = "none")+ylim(0,10)+
+  geom_boxplot(color="gray35",outlier.colour = "gray45",outlier.size = pointS)+ theme(legend.position = "none")+ylim(0,10)+
   scale_fill_manual(values=wes_palette(n=11, name="Darjeeling2", type = "continuous"),name="")+
-  ylab("VeDBA (g)")+xlab("")+theme(text = element_text(size=15))
+  ylab("VeDBA (g)")+xlab("")+theme(text = element_text(size=textS))
 
 
 ggarrange(plot1,plot2,nrow=2)
