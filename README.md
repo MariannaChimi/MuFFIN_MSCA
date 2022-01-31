@@ -1,8 +1,15 @@
 # MuFFIN_MSCA
 **This repository contains R codes developed during my MSCA - 890284 - MuFFIN - Modelling Foraging Fitness in Marine Predators**
 
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
-content of Paper_I folder:
+@@content of Paper_I folder:@@
 
 "RCode_Analysis_Little" and "RCode_Analysis_Adelie" contains R code to manipulate raw accelerometer data
 
