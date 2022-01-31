@@ -1,20 +1,20 @@
 # MuFFIN_MSCA
 ##**This repository contains R codes developed during my MSCA - 890284 - MuFFIN - Modelling Foraging Fitness in Marine Predators**
 
-```diff
-@@ content of Paper_I folder: @@
-```
 
-"RCode_Analysis_Little" and "RCode_Analysis_Adelie" contains R code to manipulate raw accelerometer data
+@@content of Paper_I folder:@@
 
-"MultipleEM..."contains R code used to run the unsupervised machine learning algorithm Expectation Maximisation on both species
 
-"CheckEMResults.."contains R code used to check results obtained from the unsupervised machine learning algorithm Expectation Maximisation on both species
+"RCode_Analysis_Little", "RCode_Analysis_Adelie" *contains R code to manipulate raw accelerometer data*
 
-"RandomForest..." R codes for building and testing the supervised machine learning approach Random Forest on both species of penguins. "..MixSeasons" is combining the number of  breeding seasons used.
+"MultipleEM..." *contains R code used to run the unsupervised machine learning algorithm Expectation Maximisation on both species*
 
-"VariabilityLittle" and "VariabilityAdelie" contains R code to run the variability analysis on the 2 species of penguins
+"CheckEMResults.." *contains R code used to check results obtained from the unsupervised machine learning algorithm Expectation Maximisation on both species*
 
-"EnergyBalance_Adelie" contains R code to calculate Daily Energy Expenditure
+"RandomForest..." *R codes for building and testing the supervised machine learning approach Random Forest on both species of penguins. "..MixSeasons" is combining the number of  breeding seasons used.*
 
-"BudgetChanges" contains R code for additional general plotting functions to compare time-budgets changes obtained from the machine learning approaced used. 
+"VariabilityLittle", "VariabilityAdelie" *contains R code to run the variability analysis on the 2 species of penguins*
+
+"EnergyBalance_Adelie" *contains R code to calculate Daily Energy Expenditure*
+
+"BudgetChanges" *contains R code for additional general plotting functions to compare time-budgets changes obtained from the machine learning approaced used.*
