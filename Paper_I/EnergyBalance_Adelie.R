@@ -231,10 +231,10 @@ write.csv(AllBudgetsDF_Complete, "/Users/mariannachimienti/MarieCurie/RF_Results
 
 lineS<-0.7
 pointS<-6
-textS<-20
+textS<-25
 
 
-AllBudgetsDF_Complete<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AllBudgetsAdelie2019_2020_All_E.csv",header=TRUE)
+AllBudgetsDF_Complete<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AllBudgetsAdelie2019_2020_All_E.csv",header=TRUE)
 dim(AllBudgetsDF_Complete)
 
 boxplot(AllBudgetsDF_Complete$EE_VeDBA~AllBudgetsDF_Complete$Method)
@@ -371,7 +371,7 @@ plot3
 
 #ggarrange(plot1,plot2,plot3, nrow=2,ncol=2,common.legend = FALSE)
 
-grid.arrange(plot1, plot2,                                      # bar plot spaning two columns
+grid.arrange(plot2, plot1,                                      # bar plot spaning two columns
              plot3,                              # box plot and scatter plot
              ncol = 2, nrow = 2, 
              layout_matrix = rbind(c(1,2), c(3,3)))                                             

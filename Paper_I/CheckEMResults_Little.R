@@ -471,7 +471,7 @@ library(lisa) # https://cran.r-project.org/web/packages/lisa/readme/README.html
 
 filenamesTrips <-
   list.files(
-    "/Users/mariannachimienti/MarieCurie/Little_2020EM/",
+    "/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/Little_2020EM/",
     pattern = "*.csv",
     full.names = TRUE
   )
@@ -512,7 +512,7 @@ accData$States_lev<-factor(accData$States1, levels = c("1_Dive","2_Dive","3_Dive
 head(accData)
 lineS<-0.7
 pointS<-6
-textS<-20
+textS<-25
 
 
 ###################### below surface

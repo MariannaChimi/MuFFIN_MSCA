@@ -247,14 +247,14 @@ library(ggpubr)
 
 lineS<-0.7
 pointS<-6
-textS<-25
+textS<-35
 
 
-Little_MixSeason<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Little_MixSeason.csv",header=TRUE)
+Little_MixSeason<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/RScores_Little_MixSeason.csv",header=TRUE)
 ####beh Still1 had a problem in the Mix dataset for VeDBA~maybe remove 
 #Little_MixSeason<-Little_MixSeason[-which(Little_MixSeason$Beh=="Still1"),]
 
-Little_2020<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Little_2020.csv",header=TRUE)
+Little_2020<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/RScores_Little_2020.csv",header=TRUE)
 ####beh Still1 had a problem in Little 2020 as only 1 animal had that beh
 
 
@@ -292,10 +292,11 @@ pd <- position_dodge(0.5) # move them .05 to the left and right
 plot1<-ggplot(LittleDF, aes(x=Beh, y=mean,fill=var,shape=DF, group=group)) + 
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black",  width=.5,size=lineS, position=pd) +
   geom_point(position=pd, size=pointS)+
-  theme_bw() +theme(text = element_text(size=textS))+ylim(0,1)+
+  theme_bw(base_size = textS) +theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(name="",values=wes_palette(name="Darjeeling2")[2:3])+
   scale_shape_manual(name="",values=c(24,22),labels = c("Training from both seasons", "Training from season one only"))+
-  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+ggtitle("Little penguin")+
+  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x",ncol=1)+ggtitle("Little penguin")+
+  theme(plot.title = element_text(hjust = 1)) +      # Align title on right side
   guides(fill = guide_legend(override.aes = list(shape = 21)),
          shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=textS))
 
@@ -304,8 +305,8 @@ plot1
 
 
 
-Adelie_MixSeason<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Adelie_MixSeason.csv",header=TRUE)
-Adelie2019_2020<-fread("/Users/mariannachimienti/MarieCurie/RF_Results/RScores_Adelie2019_2020.csv",header=TRUE)
+Adelie_MixSeason<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/RScores_Adelie_MixSeason.csv",header=TRUE)
+Adelie2019_2020<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/RScores_Adelie2019_2020.csv",header=TRUE)
 
 
 Adelie_MixSeason$Species<-"Adelie"
@@ -343,17 +344,17 @@ pd <- position_dodge(0.5) # move them .05 to the left and right
 plot2<-ggplot(AdelieDF, aes(x=Beh, y=mean,fill=var,shape=DF, group=group)) + 
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), colour="black", width=.5,size=lineS, position=pd) +
   geom_point(position=pd, size=pointS)+
-  theme_bw() +theme(text = element_text(size=textS))+ylim(0,1)+
+  theme_bw(base_size = textS) +theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(name="",values=wes_palette(name="Darjeeling2")[2:3])+
   scale_shape_manual(name="",values=c(24,22),labels = c("Training from both seasons", "Training from season one only"))+
-  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x")+ggtitle("Adélie penguin")+
+  xlab("")+ylab("Repeatability")+ facet_wrap(~Env,scales="free_x",ncol=1)+ggtitle("Adélie penguin")+
   guides(fill = guide_legend(override.aes = list(shape = 21)),
          shape = guide_legend(override.aes = list(fill = "black")))+ theme(legend.text=element_text(size=textS))
 
 plot2
 
 
-ggarrange(plot2,plot1,common.legend = TRUE,nrow=2)
+ggarrange(plot2,plot1,common.legend = TRUE,ncol=2)
 
 
 

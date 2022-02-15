@@ -1141,48 +1141,54 @@ quit(save="no")
 
 
 ############## plot all seasons and compare
-Accuracy_2019DF <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2019_2020_All.csv",header=TRUE)
+Accuracy_2019DF <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2019_2020_All.csv",header=TRUE)
 Accuracy_2019DF$Season<-1
 Accuracy_2019DF$Train_Test<-"In Train"
 Accuracy_2019DF$RFType<-"1Season"
 summary(Accuracy_2019DF)
 sd(Accuracy_2019DF$Accuracy)
+length(which(Accuracy_2019DF$Accuracy<0.70))/nrow(Accuracy_2019DF)
 
-Accuracy_2018DF <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2018_2019_All.csv",header=TRUE)
+Accuracy_2018DF <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2018_2019_All.csv",header=TRUE)
 Accuracy_2018DF$Season<-2
 Accuracy_2018DF$Train_Test<-"In Predict"
 Accuracy_2018DF$RFType<-"1Season"
 summary(Accuracy_2018DF)
 sd(Accuracy_2018DF$Accuracy)
+length(which(Accuracy_2018DF$Accuracy<0.70))/nrow(Accuracy_2018DF)
 
-Accuracy_2018DF_MixIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2018_2019_MixInTraining.csv",header=TRUE)
+Accuracy_2018DF_MixIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2018_2019_MixInTraining.csv",header=TRUE)
 Accuracy_2018DF_MixIn$Season<-2
 Accuracy_2018DF_MixIn$Train_Test<-"In Train"
 Accuracy_2018DF_MixIn$RFType<-"MixSeason"
 summary(Accuracy_2018DF_MixIn)
 sd(Accuracy_2018DF_MixIn$Accuracy)
+length(which(Accuracy_2018DF_MixIn$Accuracy<0.70))/nrow(Accuracy_2018DF_MixIn)
 
-Accuracy_2018DF_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2018_2019_MixNotInTraining.csv",header=TRUE)
+Accuracy_2018DF_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2018_2019_MixNotInTraining.csv",header=TRUE)
 Accuracy_2018DF_MixNotIn$Season<-2
 Accuracy_2018DF_MixNotIn$Train_Test<-"In Predict"
 Accuracy_2018DF_MixNotIn$RFType<-"MixSeason"
 summary(Accuracy_2018DF_MixNotIn)
 sd(Accuracy_2018DF_MixNotIn$Accuracy)
+length(which(Accuracy_2018DF_MixNotIn$Accuracy<0.70))/nrow(Accuracy_2018DF_MixNotIn)
 
 
-Accuracy_2019DF_MixIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2019_2020_MixInTraining.csv",header=TRUE)
+Accuracy_2019DF_MixIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2019_2020_MixInTraining.csv",header=TRUE)
 Accuracy_2019DF_MixIn$Season<-1
 Accuracy_2019DF_MixIn$Train_Test<-"In Train"
 Accuracy_2019DF_MixIn$RFType<-"MixSeason"
 summary(Accuracy_2019DF_MixIn)
 sd(Accuracy_2019DF_MixIn$Accuracy)
+length(which(Accuracy_2019DF_MixIn$Accuracy<0.70))/nrow(Accuracy_2019DF_MixIn)
 
-Accuracy_2019DF_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFAdelie2019_2020_MixNotInTraining.csv",header=TRUE)
+Accuracy_2019DF_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFAdelie2019_2020_MixNotInTraining.csv",header=TRUE)
 Accuracy_2019DF_MixNotIn$Season<-1
 Accuracy_2019DF_MixNotIn$Train_Test<-"In Predict"
 Accuracy_2019DF_MixNotIn$RFType<-"MixSeason"
 summary(Accuracy_2019DF_MixNotIn)
 sd(Accuracy_2019DF_MixNotIn$Accuracy)
+length(which(Accuracy_2019DF_MixNotIn$Accuracy<0.70))/nrow(Accuracy_2019DF_MixNotIn)
 
 AccuracyAll<-rbind(Accuracy_2019DF,Accuracy_2018DF,Accuracy_2018DF_MixIn,Accuracy_2018DF_MixNotIn,Accuracy_2019DF_MixIn,Accuracy_2019DF_MixNotIn)
 AccuracyAll$Season<-as.factor(AccuracyAll$Season)
@@ -1198,7 +1204,7 @@ names(supp.labs) <- c("1Season", "MixSeason")
 
 lineS<-0.7
 pointS<-6
-textS<-20
+textS<-25
 
 
 library("wesanderson")

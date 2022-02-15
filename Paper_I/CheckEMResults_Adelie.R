@@ -635,15 +635,15 @@ library(lisa) # https://cran.r-project.org/web/packages/lisa/readme/README.html
 
 filenamesTrips <-
   list.files(
-    "/Users/mariannachimienti/MarieCurie/Adelie_2019_2020EM",
+    "/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/Adelie_2019_2020EM",
     pattern = "*.csv",
     full.names = TRUE
   )
 
 #### read file
 #accData<-fread("/Users/mariannachimienti/Dropbox/MarieCurie/DataLittle/G3002MP19_S1Cut.csv",header=TRUE)
-#TripID<-20
-TripID<-81 #for underneath the ice
+TripID<-20
+#TripID<-81 #for underneath the ice
 filenamesTrips[TripID]
 accData <- fread(filenamesTrips[TripID], header = TRUE)
 
@@ -682,7 +682,7 @@ accData$States_lev<-factor(accData$States4, levels = c("1_Dive","2_Dive","3_Dive
 
 lineS<-0.7
 pointS<-6
-textS<-20
+textS<-25
 
 subAcc<-accData[790000:860000]
 subAccPoint<-subAcc[which(subAcc$States_lev=="1_UWLand"|subAcc$States_lev=="2_UWLand"|subAcc$States_lev=="3_UWLand"|subAcc$States_lev=="4_UWLand"),]

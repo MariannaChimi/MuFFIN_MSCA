@@ -1085,50 +1085,56 @@ ggplot() +
 
 
 ############## plot all seasons and compare
-AccuracyDFLittle_2020 <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2020_All.csv",header=TRUE)
+AccuracyDFLittle_2020 <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2020_All.csv",header=TRUE)
 AccuracyDFLittle_2020$Season<-1
 AccuracyDFLittle_2020$Train_Test<-"In Train"
 AccuracyDFLittle_2020$RFType<-"1Season"
 summary(AccuracyDFLittle_2020)
 sd(AccuracyDFLittle_2020$Accuracy)
+length(which(AccuracyDFLittle_2020$Accuracy<0.70))/nrow(AccuracyDFLittle_2020)
 
-AccuracyDFLittle_2019 <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2019_All.csv",header=TRUE)
+AccuracyDFLittle_2019 <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2019_All.csv",header=TRUE)
 AccuracyDFLittle_2019$Season<-2
 AccuracyDFLittle_2019$Train_Test<-"In Predict"
 AccuracyDFLittle_2019$RFType<-"1Season"
 summary(AccuracyDFLittle_2019)
 sd(AccuracyDFLittle_2019$Accuracy)
+length(which(AccuracyDFLittle_2019$Accuracy<0.70))/nrow(AccuracyDFLittle_2019)
 
-AccuracyDFLittle_2020_MixIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2020_MixInTraining.csv",header=TRUE)
+AccuracyDFLittle_2020_MixIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2020_MixInTraining.csv",header=TRUE)
 AccuracyDFLittle_2020_MixIn$Season<-1
 AccuracyDFLittle_2020_MixIn$Train_Test<-"In Train"
 AccuracyDFLittle_2020_MixIn$RFType<-"MixSeason"
 summary(AccuracyDFLittle_2020_MixIn)
 sd(AccuracyDFLittle_2020_MixIn$Accuracy)
+length(which(AccuracyDFLittle_2020_MixIn$Accuracy<0.70))/nrow(AccuracyDFLittle_2020_MixIn)
 
 
-AccuracyDFLittle_2020_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2020_MixNotInTraining.csv",header=TRUE)
+AccuracyDFLittle_2020_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2020_MixNotInTraining.csv",header=TRUE)
 AccuracyDFLittle_2020_MixNotIn$Season<-1
 AccuracyDFLittle_2020_MixNotIn$Train_Test<-"In Predict"
 AccuracyDFLittle_2020_MixNotIn$RFType<-"MixSeason"
 summary(AccuracyDFLittle_2020_MixNotIn)
 sd(AccuracyDFLittle_2020_MixNotIn$Accuracy)
+length(which(AccuracyDFLittle_2020_MixNotIn$Accuracy<0.70))/nrow(AccuracyDFLittle_2020_MixNotIn)
 
 
-AccuracyDFLittle_2019_MixIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2019_MixInTraining.csv",header=TRUE)
+AccuracyDFLittle_2019_MixIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2019_MixInTraining.csv",header=TRUE)
 AccuracyDFLittle_2019_MixIn$Season<-2
 AccuracyDFLittle_2019_MixIn$Train_Test<-"In Train"
 AccuracyDFLittle_2019_MixIn$RFType<-"MixSeason"
 summary(AccuracyDFLittle_2019_MixIn)
 sd(AccuracyDFLittle_2019_MixIn$Accuracy)
+length(which(AccuracyDFLittle_2019_MixIn$Accuracy<0.70))/nrow(AccuracyDFLittle_2019_MixIn)
 
 
-AccuracyDFLittle_2019_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/RF_Results/AccuracyDFLittle_2019_MixNotInTraining.csv",header=TRUE)
+AccuracyDFLittle_2019_MixNotIn <-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AccuracyDFLittle_2019_MixNotInTraining.csv",header=TRUE)
 AccuracyDFLittle_2019_MixNotIn$Season<-2
 AccuracyDFLittle_2019_MixNotIn$Train_Test<-"In Predict"
 AccuracyDFLittle_2019_MixNotIn$RFType<-"MixSeason"
 summary(AccuracyDFLittle_2019_MixNotIn)
 sd(AccuracyDFLittle_2019_MixNotIn$Accuracy)
+length(which(AccuracyDFLittle_2019_MixNotIn$Accuracy<0.70))/nrow(AccuracyDFLittle_2019_MixNotIn)
 
 
 
