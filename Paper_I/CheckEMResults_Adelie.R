@@ -643,7 +643,7 @@ filenamesTrips <-
 #### read file
 #accData<-fread("/Users/mariannachimienti/Dropbox/MarieCurie/DataLittle/G3002MP19_S1Cut.csv",header=TRUE)
 TripID<-20
-#TripID<-81 #for underneath the ice
+TripID<-81 #for underneath the ice
 filenamesTrips[TripID]
 accData <- fread(filenamesTrips[TripID], header = TRUE)
 
@@ -844,7 +844,7 @@ custom_colors <- scale_fill_manual(name = "diving behavioural states", values = 
                                      labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))
 
 plotBox1<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=(depth25Hz*-1),fill=States_lev),outlier.size = pointS)+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=(depth25Hz*-1),fill=States_lev),outlier.size = pointS,outlier.shape=1)+
   # scale_colour_igv()+
   custom_colors+
   scale_x_discrete( labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))+
@@ -853,7 +853,7 @@ plotBox1<-ggplot() + theme_bw()+
 
 
 plotBox2<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=Pitch,fill=States_lev),outlier.size = pointS)+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=Pitch,fill=States_lev),outlier.size = pointS,outlier.shape=1)+
   # scale_colour_igv()+
   custom_colors+
   xlab("")+ylab("Pitch (degrees)")+
@@ -861,7 +861,7 @@ plotBox2<-ggplot() + theme_bw()+
   theme(text = element_text(size=textS))+ theme(legend.text=element_text(size=textS))
 
 plotBox3<-ggplot() + theme_bw()+
-  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=VeDBA,fill=States_lev),outlier.size = pointS)+
+  geom_boxplot(data=subAccPoint, aes(x=States_lev, y=VeDBA,fill=States_lev),outlier.size = pointS,outlier.shape=1)+
   # scale_colour_igv()+
   custom_colors+
   scale_x_discrete( labels=c("1_Dive"="Descend", "2_Dive"="Swim/Cruise while diving", "3_Dive"="Swim/Cruise type 2", "4_Dive"="Hunt","5_Dive"="Ascend"))+

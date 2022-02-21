@@ -1152,7 +1152,7 @@ names(supp.labs) <- c("1Season", "MixSeason")
 
 library("wesanderson")
 plotLittle<- ggplot() + theme_bw() +
-  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1),outlier.size = pointS, data = AccuracyAll)+
+  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1),outlier.size = pointS, outlier.shape=1,data = AccuracyAll)+
   ylab("")+xlab("Season number")+theme(text = element_text(size=textS))+ylim(0,1)+ggtitle("Little penguin")+
   theme(plot.title = element_text(hjust = 1)) +  
   scale_fill_manual(values=wes_palette(n=2, name="Chevalier1"),name="",labels = c("Train","Predict"))+ 

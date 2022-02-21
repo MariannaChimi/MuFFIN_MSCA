@@ -1209,7 +1209,7 @@ textS<-25
 
 library("wesanderson")
 plotAdelie<- ggplot() + theme_bw() +
-  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1),outlier.size = pointS, data = AccuracyAll)+ggtitle("Adélie penguin")+
+  geom_boxplot(aes(y = Accuracy, x = Season, fill = Lev1),outlier.size = pointS,outlier.shape=1, data = AccuracyAll)+ggtitle("Adélie penguin")+
   ylab("RF vs EM agreement")+xlab("Season number")+theme(text = element_text(size=textS))+ylim(0,1)+
   scale_fill_manual(values=wes_palette(n=2, name="Chevalier1"),name="",labels = c("Train","Predict"))+ 
   facet_grid(. ~ RFType,labeller = labeller(RFType = supp.labs))+ theme(legend.position="top")+
