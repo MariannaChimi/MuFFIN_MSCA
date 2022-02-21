@@ -930,7 +930,7 @@ ggplot() +
 #########################################################
 lineS<-0.7
 pointS<-6
-textS<-20
+textS<-25
 library(ggfortify)
 
 
@@ -965,7 +965,7 @@ level1<-ifelse(g$.level=="Rest","Slow surface swim",
                                                                       ifelse(g$.level=="Ascending","Ascend",as.character(g$.level)))))))
 
 g$.level<-level1
-dev.new()
+#dev.new()
 autoplot(g)+theme(text = element_text(size=textS))+
   aes(size = as.factor(.group)) +
   scale_size_manual(values =rep(lineS,10),guide="none")

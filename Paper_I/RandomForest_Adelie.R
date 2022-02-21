@@ -1139,7 +1139,7 @@ AllBudgets$beh<-as.factor(AllBudgets$beh)
   #########################################################
   lineS<-0.7
   pointS<-6
-  textS<-20
+  textS<-25
   library(ggfortify)
   
   
