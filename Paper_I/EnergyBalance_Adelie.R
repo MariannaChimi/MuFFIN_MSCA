@@ -239,7 +239,6 @@ dim(AllBudgetsDF_Complete)
 AllBudgetsDF_Complete$tripLength<-AllBudgetsDF_Complete$Time_Preen_s+AllBudgetsDF_Complete$Time_Water_s+AllBudgetsDF_Complete$Time_Land_s
 AllBudgetsDF_Complete$tripLength<-(AllBudgetsDF_Complete$tripLength/3600)/24
 AllBudgetsDF_Complete$tripLengthEE<-AllBudgetsDF_Complete$EE_VeDBA*AllBudgetsDF_Complete$tripLength*4817 #4817 is the average weight in grams of Adelie penguin in this study
-summary(AllBudgetsDF_Complete$tripLengthEE)
 
 
 boxplot(AllBudgetsDF_Complete$EE_VeDBA~AllBudgetsDF_Complete$Method)
