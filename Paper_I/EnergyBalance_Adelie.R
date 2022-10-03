@@ -236,6 +236,11 @@ textS<-25
 
 AllBudgetsDF_Complete<-fread("/Users/mariannachimienti/MarieCurie/Paper_I_data&analysis/RF_Results/AllBudgetsAdelie2019_2020_All_E.csv",header=TRUE)
 dim(AllBudgetsDF_Complete)
+AllBudgetsDF_Complete$tripLength<-AllBudgetsDF_Complete$Time_Preen_s+AllBudgetsDF_Complete$Time_Water_s+AllBudgetsDF_Complete$Time_Land_s
+AllBudgetsDF_Complete$tripLength<-(AllBudgetsDF_Complete$tripLength/3600)/24
+AllBudgetsDF_Complete$tripLengthEE<-AllBudgetsDF_Complete$EE_VeDBA*AllBudgetsDF_Complete$tripLength*4817 #4817 is the average weight in grams of Adelie penguin in this study
+summary(AllBudgetsDF_Complete$tripLengthEE)
+
 
 boxplot(AllBudgetsDF_Complete$EE_VeDBA~AllBudgetsDF_Complete$Method)
 tapply(AllBudgetsDF_Complete$EE_VeDBA,AllBudgetsDF_Complete$Method,summary)
@@ -260,6 +265,7 @@ AllBudgetsDF_Complete$TotTime<-AllBudgetsDF_Complete$Time_Preen_s+AllBudgetsDF_C
 AllBudgetsDF_Complete$PropPreen<-AllBudgetsDF_Complete$Time_Preen_s/AllBudgetsDF_Complete$TotTime
 AllBudgetsDF_Complete$PropWater<-AllBudgetsDF_Complete$Time_Water_s/AllBudgetsDF_Complete$TotTime
 AllBudgetsDF_Complete$PropLand<-AllBudgetsDF_Complete$Time_Land_s/AllBudgetsDF_Complete$TotTime
+
 
 Prop_DF_Preen<-AllBudgetsDF_Complete[,c("PropPreen","Method","ID_Ind")]
 colnames(Prop_DF_Preen)[1]<-"val"
